@@ -53,7 +53,9 @@ export function Summary() {
           }).format(summary.withdraws)}
         </strong>
       </div>
-      <div className="highlights-background">
+      {summary.total < 0 ? 
+
+        <div className="highlights-red-background">
         <header>
           <p>Total</p>
           <img src={totalImg} alt="Total" />
@@ -64,7 +66,24 @@ export function Summary() {
             currency: "BRL",
           }).format(summary.total)}
         </strong>
-      </div>
+      </div> 
+      
+          : 
+
+      <div className="highlights-background">
+         <header>
+           <p>Total</p>
+           <img src={totalImg} alt="Total" />
+         </header>
+         <strong>
+           {new Intl.NumberFormat("pt-BR", {
+             style: "currency",
+             currency: "BRL",
+           }).format(summary.total)}
+         </strong>
+       </div>
+      }
+     
     </Container>
   );
 }
